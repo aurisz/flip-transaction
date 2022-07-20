@@ -1,6 +1,6 @@
 import { useEffect, useReducer } from 'react';
 
-import { formatTransactionList } from '../utils';
+import { formatTransactionList } from '../utils/transaction';
 
 import type { ResponseData, TransactionItem } from '../types/transaction';
 
