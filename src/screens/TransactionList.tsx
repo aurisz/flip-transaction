@@ -2,12 +2,12 @@ import * as React from 'react';
 import { Text, FlatList, SafeAreaView, StyleSheet } from 'react-native';
 import { useAtom } from 'jotai';
 
-import { transactionListAtom } from '../store';
+import { transactionListAtom } from '@store/index';
 
 import TransactionListItem, {
   type TransactionListItemProps,
-} from '../components/TransactionListItem';
-import TransactionListFilter from '../components/TransactionListFilter';
+} from '@components/TransactionListItem';
+import TransactionListFilter from '@components/TransactionListFilter';
 
 import type { HomeScreenNavigationProp } from '../types/navigation';
 import type { TransactionItem } from '../types/transaction';

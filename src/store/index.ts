@@ -1,10 +1,7 @@
 import { atom } from 'jotai';
 import { loadable } from 'jotai/utils';
 
-import {
-  formatTransactionList,
-  filterTransactionList,
-} from '../utils/transaction';
+import { formatTransactionList, filterTransactionList } from '@utils/index';
 
 const url = 'https://recruitment-test.flip.id/frontend-test';
 

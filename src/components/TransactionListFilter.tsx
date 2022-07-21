@@ -2,8 +2,8 @@ import * as React from 'react';
 import { View, TextInput, StyleSheet, Text } from 'react-native';
 import { useAtom } from 'jotai';
 
-import { filterAtom } from '../store';
-import useDebounce from '../hooks/useDebounce';
+import { filterAtom } from '@store/index';
+import useDebounce from '@hooks/useDebounce';
 
 const TransactionListFilter = () => {
   const [value, setValue] = React.useState('');
