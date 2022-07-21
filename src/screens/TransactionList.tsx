@@ -1,11 +1,13 @@
 import * as React from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { Text, FlatList, SafeAreaView, StyleSheet } from 'react-native';
+import { useAtom } from 'jotai';
 
-import useFetchTransaction from '../hooks/useFetchTransaction';
+import { transactionListAtom } from '../store';
 
 import TransactionListItem, {
   type TransactionListItemProps,
 } from '../components/TransactionListItem';
+import TransactionListFilter from '../components/TransactionListFilter';
 
 import type { HomeScreenNavigationProp } from '../types/navigation';
 import type { TransactionItem } from '../types/transaction';
@@ -20,7 +22,7 @@ const _getTransactionListItemProps = (
     senderBank,
     beneficiaryBank,
     beneficiaryName,
-    amount,
+    amountFormatted,
     createdAt,
     status,
     statusText,
@@ -30,7 +32,7 @@ const _getTransactionListItemProps = (
   senderBank,
   beneficiaryBank,
   beneficiaryName,
-  amount,
+  amountFormatted,
   createdAt,
   status,
   statusText,
@@ -43,27 +45,34 @@ const _renderItem = (props: TransactionListItemProps) => (
 );
 
 function TransactionList({ navigation }: HomeScreenProps) {
-  const { data, error } = useFetchTransaction();
+  const [value] = useAtom(transactionListAtom);
 
-  if (!data) {
+  if (value.isLoading) {
     return <Text>Loading...</Text>;
   }
 
-  if (error) {
+  if (value.isError) {
     return <Text>There is an error.</Text>;
   }
 
   return (
-    <View>
+    <SafeAreaView style={styles.container}>
+      <TransactionListFilter />
       <FlatList
         initialNumToRender={8}
-        data={data}
+        data={value.data}
         renderItem={({ item }) =>
           _renderItem(_getTransactionListItemProps(item, navigation))
         }
       />
-    </View>
+    </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
 
 export default TransactionList;
