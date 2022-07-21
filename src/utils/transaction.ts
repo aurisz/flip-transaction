@@ -59,7 +59,7 @@ export const formatTransactionItem = (item: ResponseItem): TransactionItem => ({
   amount: item.amount,
   amountFormatted: formatCurrency(item.amount),
   createdAt: formatDate(item.created_at),
-  statusText: getStatusLabel(item.status),
+  statusLabel: getStatusLabel(item.status),
 });
 
 /**

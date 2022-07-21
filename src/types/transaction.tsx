@@ -26,7 +26,7 @@ export type TransactionItem = {
   amount: number;
   amountFormatted: string;
   createdAt: string;
-  statusText: string;
+  statusLabel: string;
 };
 
 export type ResponseData = {

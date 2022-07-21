@@ -25,7 +25,7 @@ const _getTransactionListItemProps = (
     amountFormatted,
     createdAt,
     status,
-    statusText,
+    statusLabel,
   }: TransactionItem,
   navigation: HomeScreenNavigationProp,
 ): TransactionListItemProps => ({
@@ -35,7 +35,7 @@ const _getTransactionListItemProps = (
   amountFormatted,
   createdAt,
   status,
-  statusText,
+  statusLabel,
   onPress: () =>
     navigation.navigate('TransactionDetail', { transactionId: id }),
 });
