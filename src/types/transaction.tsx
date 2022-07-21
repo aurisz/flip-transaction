@@ -14,6 +14,7 @@ export type ResponseItem = {
 };
 
 export type TransactionItem = {
+  [key: string]: any;
   id: string;
   status: string;
   uniqueCode: number;
@@ -22,7 +23,8 @@ export type TransactionItem = {
   beneficiaryName: string;
   beneficiaryBank: string;
   senderBank: string;
-  amount: string;
+  amount: number;
+  amountFormatted: string;
   createdAt: string;
   statusText: string;
 };
