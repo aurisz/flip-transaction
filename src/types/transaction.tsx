@@ -1,4 +1,4 @@
-export type ResponseItem = {
+export interface ResponseItem {
   id: string;
   amount: number;
   unique_code: number;
@@ -11,9 +11,9 @@ export type ResponseItem = {
   created_at: string;
   completed_at: string;
   fee: number;
-};
+}
 
-export type TransactionItem = {
+export interface TransactionItem {
   [key: string]: any;
   id: string;
   status: string;
@@ -27,8 +27,11 @@ export type TransactionItem = {
   amountFormatted: string;
   createdAt: string;
   statusLabel: string;
-};
+}
 
-export type ResponseData = {
+export interface ResponseData {
   [key: string]: ResponseItem;
-};
+}
+
+export type SortValue = 'beneficiaryName' | 'createdAt' | 'id';
+export type SortOrder = 'asc' | 'desc';

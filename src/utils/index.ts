@@ -2,6 +2,8 @@ import type {
   ResponseData,
   ResponseItem,
   TransactionItem,
+  SortValue,
+  SortOrder,
 } from '../types/transaction';
 
 /**
@@ -96,4 +98,30 @@ export const filterTransactionList = (
       return filteredItem.includes(keyword.toLowerCase());
     }),
   );
+};
+
+interface SortData {
+  [k: string]: string;
+}
+
+/**
+ * sort array by field and order
+ *
+ * @param {Array} transactions
+ * @param {SortValue} field
+ * @param {SortOrder} order
+ * @returns {Array} sorted array
+ */
+export const sortArrayByField = (
+  array: SortData[],
+  field: SortValue,
+  order: SortOrder,
+): SortData[] => {
+  const isAscending = order === 'asc';
+
+  return array.sort((a, b) => {
+    return (
+      (+(a[field] > b[field]) - +(b[field] > a[field])) * (isAscending ? 1 : -1)
+    );
+  });
 };
