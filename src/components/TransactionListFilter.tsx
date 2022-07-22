@@ -4,6 +4,7 @@ import { useAtom } from 'jotai';
 
 import { filterAtom } from '@store/index';
 import useDebounce from '@hooks/useDebounce';
+import TransactionListSort from '@components/TransactionListSort';
 
 const TransactionListFilter = () => {
   const [value, setValue] = React.useState('');
@@ -30,6 +31,7 @@ const TransactionListFilter = () => {
         value={value}
         placeholder="Cari nama, bank, atau nominal"
       />
+      <TransactionListSort />
     </View>
   );
 };
