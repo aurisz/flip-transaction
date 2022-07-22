@@ -8,7 +8,7 @@ module.exports = {
         extensions: ['.ts', '.tsx'],
         alias: {
           '@components': './src/components',
-          '@src/constants': './src/constants',
+          '@constants': './src/constants',
           '@hooks': './src/hooks',
           '@navigation': './src/navigation',
           '@screens': './src/screens',
