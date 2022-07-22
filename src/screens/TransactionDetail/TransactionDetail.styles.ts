@@ -7,6 +7,9 @@ export default StyleSheet.create({
   section: {
     padding: 20,
   },
+  alignCenter: {
+    alignItems: 'center',
+  },
   header: {
     color: 'black',
     fontWeight: '600',
@@ -25,7 +28,6 @@ export default StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
-    marginTop: 3,
   },
   flex: {
     flex: 1,
@@ -33,5 +35,10 @@ export default StyleSheet.create({
   column: {
     paddingVertical: 9,
     flexDirection: 'column',
+  },
+  copyIcon: {
+    color: 'orange',
+    fontSize: 18,
+    marginLeft: 6,
   },
 });

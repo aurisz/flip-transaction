@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { View, Text, Pressable } from 'react-native';
+import { SafeAreaView, View, Text, Pressable } from 'react-native';
 import { useAtom } from 'jotai';
+import Clipboard from '@react-native-clipboard/clipboard';
 
 import { selectedTransactionAtom } from '@store/index';
 import TransferLabel from '@components/TransferLabel';
@@ -12,9 +13,12 @@ function TransactionDetail({ navigation }: TransactionDetailProps) {
   const [transaction] = useAtom(selectedTransactionAtom);
 
   return (
-    <View style={styles.container}>
-      <View style={styles.section}>
+    <SafeAreaView style={styles.container}>
+      <View style={[styles.section, styles.row, styles.alignCenter]}>
         <Text style={styles.header}>ID TRANSAKSI: #{transaction.id}</Text>
+        <Pressable onPress={() => Clipboard.setString(transaction.id)}>
+          <Text style={styles.copyIcon}>⎘</Text>
+        </Pressable>
       </View>
       <View style={styles.subHeader}>
         <Text style={styles.header}>DETAIL TRANSAKSI</Text>
@@ -54,7 +58,7 @@ function TransactionDetail({ navigation }: TransactionDetailProps) {
           </View>
         </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
