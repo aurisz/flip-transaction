@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import TransactionList from '@screens/TransactionList';
-import TransactionDetail from '@screens/TransactionDetail/TransactionDetail';
+import TransactionDetail from '@screens/TransactionDetail/TransactionDetail.component';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,7 +18,7 @@ const AppNavigation = () => (
       <Stack.Screen
         name="TransactionDetail"
         component={TransactionDetail}
-        options={{ title: 'Rincian Transaksi' }}
+        options={{ headerShown: false }}
       />
     </Stack.Navigator>
   </NavigationContainer>

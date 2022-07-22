@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 
+import TransferLabel from '@components/TransferLabel';
 import styles from './TransactionListItem.styles';
 
 import type { TransactionListItemProps } from './TransactionListItem.types';
@@ -16,12 +17,11 @@ const TransactionListItem = (props: TransactionListItemProps) => {
       ]}
       onPress={props.onPress}>
       <View>
-        <View style={styles.bankInfo}>
-          <Text style={styles.bankLabel}>{props.senderBank}</Text>
-          <Text style={styles.rightArrow}>➔</Text>
-          <Text style={styles.bankLabel}>{props.beneficiaryBank}</Text>
-        </View>
-        <Text>{`${isSuccess ? '' : '- '}${props.beneficiaryName}`}</Text>
+        <TransferLabel
+          senderBank={props.senderBank}
+          beneficiaryBank={props.beneficiaryBank}
+        />
+        <Text>{props.beneficiaryName}</Text>
         <View style={styles.additionalInfo}>
           <Text>{props.amountFormatted}</Text>
           <Text style={styles.bullet}>●</Text>

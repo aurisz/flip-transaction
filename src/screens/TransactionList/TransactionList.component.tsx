@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Text, FlatList, SafeAreaView } from 'react-native';
 import { useAtom } from 'jotai';
 
-import { transactionListAtom } from '@store/index';
+import { transactionListAtom, selectTransactionAtom } from '@store/index';
 
 import TransactionListItem from './TransactionListItem';
 import TransactionListHeader from './TransactionListHeader';
@@ -26,6 +26,7 @@ const _getTransactionItemProps: GetTransactionItemProps = (
     statusLabel,
   },
   navigation,
+  setTransaction,
 ) => ({
   senderBank,
   beneficiaryBank,
@@ -34,8 +35,10 @@ const _getTransactionItemProps: GetTransactionItemProps = (
   createdAt,
   status,
   statusLabel,
-  onPress: () =>
-    navigation.navigate('TransactionDetail', { transactionId: id }),
+  onPress: () => {
+    navigation.navigate('TransactionDetail');
+    setTransaction(id);
+  },
 });
 
 const _renderTransactionItem: RenderTransactionItem = props => (
@@ -44,6 +47,7 @@ const _renderTransactionItem: RenderTransactionItem = props => (
 
 function TransactionList({ navigation }: TransactionListProps) {
   const [value] = useAtom(transactionListAtom);
+  const [, setTransaction] = useAtom(selectTransactionAtom);
 
   if (value.isLoading) {
     return <Text>Loading...</Text>;
@@ -60,7 +64,9 @@ function TransactionList({ navigation }: TransactionListProps) {
         initialNumToRender={8}
         data={value.data}
         renderItem={({ item }) =>
-          _renderTransactionItem(_getTransactionItemProps(item, navigation))
+          _renderTransactionItem(
+            _getTransactionItemProps(item, navigation, setTransaction),
+          )
         }
       />
     </SafeAreaView>

@@ -2,12 +2,10 @@ import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 export type RootStackParamList = {
   TransactionList: undefined;
-  TransactionDetail: {
-    transactionId: string;
-  };
+  TransactionDetail: undefined;
 };
 
-export type TransactionListNavigationProp = NativeStackNavigationProp<
+export type TransactionScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
   'TransactionDetail'
 >;

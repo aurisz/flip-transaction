@@ -8,7 +8,12 @@ import {
 } from '@utils/index';
 import constants from '@constants/index';
 
-import type { SortOrder, SortValue, SortOption } from '@customTypes/index';
+import type {
+  SortOrder,
+  SortValue,
+  SortOption,
+  TransactionItem,
+} from '@customTypes/index';
 
 const url = 'https://recruitment-test.flip.id/frontend-test';
 const { sortOptions } = constants;
@@ -32,11 +37,11 @@ export const transactionListAtom = atom(get => {
   const list = get(transactionsAtom);
 
   if (list.state === 'loading') {
-    return { isLoading: true, data: [] };
+    return { isLoading: true, isError: false, data: [] };
   }
 
   if (list.state === 'hasError') {
-    return { isError: true };
+    return { isError: true, isLoading: false, data: [] };
   }
 
   const filtered = !filter
@@ -49,6 +54,21 @@ export const transactionListAtom = atom(get => {
   const sorted = sortArrayByField(filtered, sortValue, sortOrder);
 
   return {
+    isLoading: false,
+    isError: false,
     data: sorted,
   };
+});
+
+export const selectedTransactionAtom = atom<
+  TransactionItem | Record<string, never>
+>({});
+
+export const selectTransactionAtom = atom(null, (get, set, transactionId) => {
+  const list = get(transactionListAtom);
+  const selectedTransaction = list.data.find(
+    el => el.id === transactionId,
+  ) as TransactionItem;
+
+  set(selectedTransactionAtom, selectedTransaction);
 });
