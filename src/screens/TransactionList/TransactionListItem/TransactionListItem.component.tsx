@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, Pressable } from 'react-native';
 
 import TransferLabel from '@components/TransferLabel';
 import styles from './TransactionListItem.styles';
@@ -10,7 +10,7 @@ const TransactionListItem = (props: TransactionListItemProps) => {
   const isSuccess = props.status === 'SUCCESS';
 
   return (
-    <TouchableOpacity
+    <Pressable
       style={[
         styles.container,
         isSuccess ? styles.containerSuccess : styles.containerPending,
@@ -37,7 +37,7 @@ const TransactionListItem = (props: TransactionListItemProps) => {
           {props.statusLabel}
         </Text>
       </View>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 
