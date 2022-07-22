@@ -4,11 +4,11 @@ import { useAtom } from 'jotai';
 
 import { sortAtom } from '@store/index';
 import RadioButton from '@components/RadioButton';
-import constants from '@constants';
+import constants from '@constants/index';
 import styles from './TransactionListSort.styles';
 
+import type { SortOption } from '@customTypes/index';
 import type { OnSelectSort } from './TransactionListSort.types';
-import { SortOption } from 'types/transaction';
 
 const { sortOptions } = constants;
 const defaultSortOption = sortOptions[0];

@@ -6,9 +6,9 @@ import {
   filterTransactionList,
   sortArrayByField,
 } from '@utils/index';
-import constants from '@constants';
+import constants from '@constants/index';
 
-import type { SortOrder, SortValue, SortOption } from '../types/transaction';
+import type { SortOrder, SortValue, SortOption } from '@customTypes/index';
 
 const url = 'https://recruitment-test.flip.id/frontend-test';
 const { sortOptions } = constants;

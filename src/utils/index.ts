@@ -4,7 +4,7 @@ import type {
   TransactionItem,
   SortValue,
   SortOrder,
-} from '../types/transaction';
+} from '@customTypes/index';
 
 /**
  * format date to DD MMMM YYYY

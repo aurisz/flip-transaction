@@ -1,5 +1,7 @@
-import type { TransactionListNavigationProp } from '../../types/navigation';
-import type { TransactionItem } from '../../types/transaction';
+import type {
+  TransactionListNavigationProp,
+  TransactionItem,
+} from '@customTypes/index';
 import type { TransactionListItemProps } from './TransactionListItem/TransactionListItem.types';
 
 export interface TransactionListProps {
