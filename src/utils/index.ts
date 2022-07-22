@@ -44,9 +44,27 @@ const getStatusLabel = (status: string): string =>
   status === 'SUCCESS' ? 'Berhasil' : 'Pengecekan';
 
 /**
+ * capitalize string
+ *
+ * @param {string} string
+ * @returns {string} capitalized string
+ */
+const capitalize = ([first, ...rest]: string) =>
+  first.toUpperCase() + rest.join('');
+
+/**
+ * format bank name based on length
+ *
+ * @param {string} name
+ * @returns {string} formatted bank name
+ */
+const formatBankName = (name: string): string =>
+  name.length > 4 ? capitalize(name) : name.toUpperCase();
+
+/**
  * format transaction list item
  *
- * @param {ResponseItem} item
+ * @param {ResponseItem} item - response data item
  * @returns {TransactionItem} formatted transaction list item
  */
 export const formatTransactionItem = (item: ResponseItem): TransactionItem => ({
@@ -55,9 +73,9 @@ export const formatTransactionItem = (item: ResponseItem): TransactionItem => ({
   uniqueCode: item.unique_code,
   remark: item.remark,
   accountNumber: item.account_number,
-  beneficiaryName: item.beneficiary_name,
-  beneficiaryBank: item.beneficiary_bank.toUpperCase(),
-  senderBank: item.sender_bank.toUpperCase(),
+  beneficiaryName: item.beneficiary_name.toUpperCase(),
+  beneficiaryBank: formatBankName(item.beneficiary_bank),
+  senderBank: formatBankName(item.sender_bank),
   amount: item.amount,
   amountFormatted: formatCurrency(item.amount),
   createdAt: formatDate(item.created_at),
