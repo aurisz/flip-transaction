@@ -7,7 +7,7 @@ export type RootStackParamList = {
   };
 };
 
-export type HomeScreenNavigationProp = NativeStackNavigationProp<
+export type TransactionListNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
   'TransactionDetail'
 >;

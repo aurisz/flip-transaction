@@ -6,16 +6,13 @@ import {
   filterTransactionList,
   sortArrayByField,
 } from '@utils/index';
-import { SortOrder, SortValue } from 'src/types/transaction';
+import constants from '@constants';
 
-type SortOption =
-  | 'id|desc'
-  | 'beneficiaryName|asc'
-  | 'beneficiaryName|desc'
-  | 'createdAt|asc'
-  | 'createdAt|desc';
+import type { SortOrder, SortValue, SortOption } from '../types/transaction';
 
 const url = 'https://recruitment-test.flip.id/frontend-test';
+const { sortOptions } = constants;
+const defaultSort = sortOptions[0].value as SortOption;
 
 const fetchTransactionsAtom = atom(async () => {
   const response = await fetch(url);
@@ -26,9 +23,8 @@ const fetchTransactionsAtom = atom(async () => {
 });
 
 export const transactionsAtom = loadable(fetchTransactionsAtom);
-
 export const filterAtom = atom('');
-export const sortAtom = atom<SortOption>('id|desc');
+export const sortAtom = atom<SortOption>(defaultSort);
 
 export const transactionListAtom = atom(get => {
   const filter = get(filterAtom);

@@ -33,5 +33,12 @@ export interface ResponseData {
   [key: string]: ResponseItem;
 }
 
+export type SortOption =
+  | 'id|desc'
+  | 'beneficiaryName|asc'
+  | 'beneficiaryName|desc'
+  | 'createdAt|asc'
+  | 'createdAt|desc';
+
 export type SortValue = 'beneficiaryName' | 'createdAt' | 'id';
 export type SortOrder = 'asc' | 'desc';

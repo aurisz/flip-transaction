@@ -84,7 +84,7 @@ const filterKeys = [
  * filter transaction list array on specific keys and keyword
  *
  * @param {TransactionItem[]} transactionList
- * @param {string} keyword
+ * @param {string} keyword - filter keyword
  * @returns {TransactionItem[]} filtered transaction item array
  */
 export const filterTransactionList = (
@@ -100,23 +100,19 @@ export const filterTransactionList = (
   );
 };
 
-interface SortData {
-  [k: string]: string;
-}
-
 /**
- * sort array by field and order
+ * sort array of objects by field and order
  *
- * @param {Array} transactions
- * @param {SortValue} field
- * @param {SortOrder} order
+ * @param {Array} array - array of objects to sort
+ * @param {SortValue} field - field to sort by
+ * @param {SortOrder} order - sort order
  * @returns {Array} sorted array
  */
-export const sortArrayByField = (
-  array: SortData[],
+export const sortArrayByField = <T extends { [k: string]: string }>(
+  array: T[],
   field: SortValue,
   order: SortOrder,
-): SortData[] => {
+): T[] => {
   const isAscending = order === 'asc';
 
   return array.sort((a, b) => {

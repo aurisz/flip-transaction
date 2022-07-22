@@ -1,22 +1,20 @@
 import * as React from 'react';
-import { Text, FlatList, SafeAreaView, StyleSheet } from 'react-native';
+import { Text, FlatList, SafeAreaView } from 'react-native';
 import { useAtom } from 'jotai';
 
 import { transactionListAtom } from '@store/index';
 
-import TransactionListItem, {
-  type TransactionListItemProps,
-} from '@components/TransactionListItem';
-import TransactionListFilter from '@components/TransactionListFilter';
+import TransactionListItem from './TransactionListItem';
+import TransactionListHeader from './TransactionListHeader';
+import styles from './TransactionList.styles';
 
-import type { HomeScreenNavigationProp } from '../types/navigation';
-import type { TransactionItem } from '../types/transaction';
+import type {
+  TransactionListProps,
+  RenderTransactionItem,
+  GetTransactionItemProps
+} from './TransactionList.types';
 
-type HomeScreenProps = {
-  navigation: HomeScreenNavigationProp;
-};
-
-const _getTransactionListItemProps = (
+const _getTransactionItemProps: GetTransactionItemProps = (
   {
     id,
     senderBank,
@@ -26,9 +24,9 @@ const _getTransactionListItemProps = (
     createdAt,
     status,
     statusLabel,
-  }: TransactionItem,
-  navigation: HomeScreenNavigationProp,
-): TransactionListItemProps => ({
+  },
+  navigation,
+) => ({
   senderBank,
   beneficiaryBank,
   beneficiaryName,
@@ -40,11 +38,11 @@ const _getTransactionListItemProps = (
     navigation.navigate('TransactionDetail', { transactionId: id }),
 });
 
-const _renderItem = (props: TransactionListItemProps) => (
+const _renderTransactionItem: RenderTransactionItem = props => (
   <TransactionListItem {...props} />
 );
 
-function TransactionList({ navigation }: HomeScreenProps) {
+function TransactionList({ navigation }: TransactionListProps) {
   const [value] = useAtom(transactionListAtom);
 
   if (value.isLoading) {
@@ -57,22 +55,16 @@ function TransactionList({ navigation }: HomeScreenProps) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <TransactionListFilter />
+      <TransactionListHeader />
       <FlatList
         initialNumToRender={8}
         data={value.data}
         renderItem={({ item }) =>
-          _renderItem(_getTransactionListItemProps(item, navigation))
+          _renderTransactionItem(_getTransactionItemProps(item, navigation))
         }
       />
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default TransactionList;

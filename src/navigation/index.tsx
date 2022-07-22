@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import TransactionList from '@screens/TransactionList';
-import TransactionDetail from '@screens/TransactionDetail';
+import TransactionDetail from '@screens/TransactionDetail/TransactionDetail';
 
 const Stack = createNativeStackNavigator();
 

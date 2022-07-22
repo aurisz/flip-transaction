@@ -1,16 +1,9 @@
 import * as React from 'react';
-import { View, Text, Pressable, StyleSheet } from 'react-native';
+import { View, Text, Pressable } from 'react-native';
 
-type Option = {
-  label: string;
-  value: string;
-};
+import styles from './RadioButton.styles';
 
-interface Props {
-  onSelect: (arg0: Option) => void;
-  options: Option[];
-  selected: Option;
-}
+import type { Props } from './RadioButton.types';
 
 const RadioButton = ({ options, onSelect, selected }: Props) => (
   <React.Fragment>
@@ -26,22 +19,5 @@ const RadioButton = ({ options, onSelect, selected }: Props) => (
     ))}
   </React.Fragment>
 );
-
-const styles = StyleSheet.create({
-  optionContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  optionIcon: {
-    fontSize: 28,
-    color: 'orange',
-  },
-  option: {
-    fontSize: 20,
-    color: 'black',
-    paddingVertical: 12,
-    paddingHorizontal: 8,
-  },
-});
 
 export default RadioButton;
