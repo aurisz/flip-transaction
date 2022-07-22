@@ -11,7 +11,7 @@ import styles from './TransactionList.styles';
 import type {
   TransactionListProps,
   RenderTransactionItem,
-  GetTransactionItemProps
+  GetTransactionItemProps,
 } from './TransactionList.types';
 
 const _getTransactionItemProps: GetTransactionItemProps = (
