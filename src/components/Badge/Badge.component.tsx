@@ -6,8 +6,14 @@ import styles from './Badge.styles';
 import type { Props } from './Badge.types';
 
 const Badge = ({ label, variant }: Props) => (
-  <View style={styles.badgeContainer}>
-    <Text style={[styles.badgeText, styles[variant]]}>{label}</Text>
+  <View style={[styles.badgeContainer, styles[variant]]}>
+    <Text
+      style={[
+        styles.badgeText,
+        variant === 'success' ? styles.successText : styles.pendingText,
+      ]}>
+      {label}
+    </Text>
   </View>
 );
 
