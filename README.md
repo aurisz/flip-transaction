@@ -58,6 +58,11 @@ Start the app (iOS)
 - Using `useMemo` to memoize conditional styling
 - Add module resolver to help tidy up relative imports
 
+
+## Demo
+
+[APK Download](https://drive.google.com/file/d/1nVP5L8bet9OTXV6-zTjESOB0ncQqpsFr/view?usp=sharing)
+
 ## Screenshots
 
 <table>
