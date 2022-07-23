@@ -2,12 +2,14 @@ import * as React from 'react';
 import { View, Text, Pressable } from 'react-native';
 
 import TransferLabel from '@components/TransferLabel';
+import Badge, { type BadgeVariant } from '@components/Badge';
 import styles from './TransactionListItem.styles';
 
 import type { TransactionListItemProps } from './TransactionListItem.types';
 
 const TransactionListItem = (props: TransactionListItemProps) => {
   const isSuccess = props.status === 'SUCCESS';
+  const badgeVariant = props.status.toLowerCase() as BadgeVariant;
 
   return (
     <Pressable
@@ -28,15 +30,7 @@ const TransactionListItem = (props: TransactionListItemProps) => {
           <Text style={styles.text}>{props.createdAt}</Text>
         </View>
       </View>
-      <View style={styles.badgeContainer}>
-        <Text
-          style={[
-            styles.badgeText,
-            isSuccess ? styles.badgeSuccess : styles.badgePending,
-          ]}>
-          {props.statusLabel}
-        </Text>
-      </View>
+      <Badge variant={badgeVariant} label={props.statusLabel} />
     </Pressable>
   );
 };
