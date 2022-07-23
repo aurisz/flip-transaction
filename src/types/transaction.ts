@@ -1,3 +1,7 @@
+import constants from '@constants/index';
+
+const { transactionStatus } = constants;
+
 export interface ResponseItem {
   id: string;
   amount: number;
@@ -42,3 +46,7 @@ export type SortOption =
 
 export type SortValue = 'beneficiaryName' | 'createdAt' | 'id';
 export type SortOrder = 'asc' | 'desc';
+
+export type TransactionStatus =
+  | typeof transactionStatus.SUCCESS
+  | typeof transactionStatus.PENDING;

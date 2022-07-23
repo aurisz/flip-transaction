@@ -21,4 +21,8 @@ export default {
       value: 'createdAt|asc',
     },
   ],
+  transactionStatus: {
+    SUCCESS: 'SUCCESS',
+    PENDING: 'PENDING',
+  },
 };

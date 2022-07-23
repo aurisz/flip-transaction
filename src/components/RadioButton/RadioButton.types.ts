@@ -3,8 +3,15 @@ export interface Option {
   value: string;
 }
 
-export interface Props {
+interface CommonProps {
   onSelect: (option: Option) => void;
-  options: Option[];
   selected: Option;
+}
+
+export interface OptionProps extends CommonProps {
+  option: Option;
+}
+
+export interface Props extends CommonProps {
+  options: Option[];
 }

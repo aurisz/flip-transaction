@@ -3,21 +3,16 @@ import { View, Text, Pressable } from 'react-native';
 
 import TransferLabel from '@components/TransferLabel';
 import Badge, { type BadgeVariant } from '@components/Badge';
-import styles from './TransactionListItem.styles';
+import getStyles from './TransactionListItem.styles';
 
 import type { TransactionListItemProps } from './TransactionListItem.types';
 
 const TransactionListItem = (props: TransactionListItemProps) => {
-  const isSuccess = props.status === 'SUCCESS';
-  const badgeVariant = props.status.toLowerCase() as BadgeVariant;
+  const badgeVariant = props.status as BadgeVariant;
+  const styles = React.useMemo(() => getStyles(props.status), [props.status]);
 
   return (
-    <Pressable
-      style={[
-        styles.container,
-        isSuccess ? styles.containerSuccess : styles.containerPending,
-      ]}
-      onPress={props.onPress}>
+    <Pressable style={styles.container} onPress={props.onPress}>
       <View>
         <TransferLabel
           senderBank={props.senderBank}

@@ -1,30 +1,39 @@
 import * as React from 'react';
 import { View, Text, Pressable } from 'react-native';
 
-import styles from './RadioButton.styles';
+import getStyles from './RadioButton.styles';
 
-import type { Props } from './RadioButton.types';
+import type { Props, OptionProps } from './RadioButton.types';
+
+const RadioButtonOption = ({ option, onSelect, selected }: OptionProps) => {
+  const isSelectedOption = option.value === selected.value;
+  const styles = React.useMemo(
+    () => getStyles(isSelectedOption),
+    [isSelectedOption],
+  );
+
+  const handleSelectRadio = () => onSelect(option);
+
+  return (
+    <Pressable onPress={handleSelectRadio}>
+      <View style={styles.optionContainer}>
+        <Text style={styles.icon}>{isSelectedOption ? '◉' : '○'}</Text>
+        <Text style={styles.option}>{option.label}</Text>
+      </View>
+    </Pressable>
+  );
+};
 
 const RadioButton = ({ options, onSelect, selected }: Props) => (
   <React.Fragment>
-    {options.map(item => {
-      const isSelectedOption = item.value === selected.value;
-
-      return (
-        <Pressable key={item.value} onPress={() => onSelect(item)}>
-          <View style={styles.optionContainer}>
-            <Text
-              style={[
-                styles.iconColor,
-                isSelectedOption ? styles.iconSelected : styles.icon,
-              ]}>
-              {isSelectedOption ? '◉' : '○'}
-            </Text>
-            <Text style={styles.option}>{item.label}</Text>
-          </View>
-        </Pressable>
-      );
-    })}
+    {options.map(option => (
+      <RadioButtonOption
+        key={option.value}
+        option={option}
+        onSelect={onSelect}
+        selected={selected}
+      />
+    ))}
   </React.Fragment>
 );
 
