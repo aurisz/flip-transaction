@@ -6,6 +6,7 @@ export default StyleSheet.create({
   container: {
     display: 'flex',
     flexDirection: 'row',
+    alignItems: 'center',
   },
   bankLabel: {
     fontSize: theme.text.size.base,
