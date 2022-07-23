@@ -16,9 +16,6 @@ export default StyleSheet.create({
     color: theme.color.black,
     fontWeight: '600',
   },
-  text: {
-    color: theme.color.black,
-  },
   closeButton: {
     color: theme.color.orange,
     fontWeight: '600',
@@ -39,10 +36,6 @@ export default StyleSheet.create({
   },
   detailContainer: {
     marginTop: theme.space.sm,
-  },
-  column: {
-    paddingVertical: theme.space.sm,
-    flexDirection: 'column',
   },
   copyIcon: {
     color: theme.color.orange,

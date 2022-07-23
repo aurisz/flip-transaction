@@ -5,6 +5,7 @@ import Clipboard from '@react-native-clipboard/clipboard';
 
 import { selectedTransactionAtom } from '@store/index';
 import TransferLabel from '@components/TransferLabel';
+import SectionItem from '@components/SectionItem';
 import styles from './TransactionDetail.styles';
 
 import type { TransactionDetailProps } from './TransactionDetail.types';
@@ -33,28 +34,23 @@ function TransactionDetail({ navigation }: TransactionDetailProps) {
         />
         <View style={[styles.row, styles.detailContainer]}>
           <View style={styles.flex}>
-            <View style={styles.column}>
-              <Text style={styles.header}>{transaction.beneficiaryName}</Text>
-              <Text style={styles.text}>{transaction.accountNumber}</Text>
-            </View>
-            <View style={styles.column}>
-              <Text style={styles.header}>BERITA TRANSFER</Text>
-              <Text style={styles.text}>{transaction.remark}</Text>
-            </View>
-            <View style={styles.column}>
-              <Text style={styles.header}>WAKTU DIBUAT</Text>
-              <Text style={styles.text}>{transaction.createdAt}</Text>
-            </View>
+            <SectionItem title={transaction.beneficiaryName}>
+              {transaction.accountNumber}
+            </SectionItem>
+            <SectionItem title="Berita Transfer">
+              {transaction.remark}
+            </SectionItem>
+            <SectionItem title="Waktu Dibuat">
+              {transaction.createdAt}
+            </SectionItem>
           </View>
           <View style={styles.flex}>
-            <View style={styles.column}>
-              <Text style={styles.header}>NOMINAL</Text>
-              <Text style={styles.text}>{transaction.amountFormatted}</Text>
-            </View>
-            <View style={styles.column}>
-              <Text style={styles.header}>KODE UNIK</Text>
-              <Text style={styles.text}>{transaction.uniqueCode}</Text>
-            </View>
+            <SectionItem title="Nominal">
+              {transaction.amountFormatted}
+            </SectionItem>
+            <SectionItem title="Kode Unik">
+              {transaction.uniqueCode}
+            </SectionItem>
           </View>
         </View>
       </View>
