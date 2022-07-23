@@ -53,3 +53,10 @@ Start the app (iOS)
 - Add module resolver to help tidy up relative imports
 - Using [Jotai](https://jotai.org/) as minimal state management library
 - Using `FlatList` instead `ScrollView` help with performance when rendering large amounts of data
+
+## Screenshots
+
+![App Screenshot](https://raw.githubusercontent.com/aurisz/flip-transaction/master/screenshots/transaction_list.png)
+![App Screenshot](https://raw.githubusercontent.com/aurisz/flip-transaction/master/screenshots/transaction_sort.png)
+![App Screenshot](https://raw.githubusercontent.com/aurisz/flip-transaction/master/screenshots/transaction_filter.png)
+![App Screenshot](https://raw.githubusercontent.com/aurisz/flip-transaction/master/screenshots/transaction_detail.png)
