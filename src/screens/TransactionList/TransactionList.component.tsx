@@ -75,11 +75,7 @@ const _renderEmptyList = () => (
   </View>
 );
 
-const _renderFooterList = () => (
-  <View style={styles.footerContainer}>
-    <Text>-- Semua transaksi ditampilkan --</Text>
-  </View>
-);
+const _renderFooterList = () => <View style={styles.footerContainer} />;
 
 function TransactionList({ navigation }: TransactionListProps) {
   const value = useAtomValue(transactionListAtom);

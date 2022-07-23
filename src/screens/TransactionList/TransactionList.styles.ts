@@ -17,7 +17,7 @@ export default StyleSheet.create({
   },
   footerContainer: {
     alignItems: 'center',
-    marginVertical: theme.space.sm,
+    marginVertical: theme.space.xs,
   },
   errorText: {
     fontSize: theme.text.size.base,
