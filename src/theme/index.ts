@@ -15,6 +15,7 @@ const theme = {
       md: 18,
       lg: 20,
       xl: 24,
+      xxl: 28,
     },
   },
   color,

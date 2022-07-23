@@ -7,16 +7,24 @@ import type { Props } from './RadioButton.types';
 
 const RadioButton = ({ options, onSelect, selected }: Props) => (
   <React.Fragment>
-    {options.map(item => (
-      <Pressable key={item.value} onPress={() => onSelect(item)}>
-        <View style={styles.optionContainer}>
-          <Text style={styles.optionIcon}>
-            {item.value === selected.value ? '◉' : '○'}
-          </Text>
-          <Text style={styles.option}>{item.label}</Text>
-        </View>
-      </Pressable>
-    ))}
+    {options.map(item => {
+      const isSelectedOption = item.value === selected.value;
+
+      return (
+        <Pressable key={item.value} onPress={() => onSelect(item)}>
+          <View style={styles.optionContainer}>
+            <Text
+              style={[
+                styles.iconColor,
+                isSelectedOption ? styles.iconSelected : styles.icon,
+              ]}>
+              {isSelectedOption ? '◉' : '○'}
+            </Text>
+            <Text style={styles.option}>{item.label}</Text>
+          </View>
+        </Pressable>
+      );
+    })}
   </React.Fragment>
 );
 
