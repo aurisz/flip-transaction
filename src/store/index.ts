@@ -13,7 +13,9 @@ import type { SortOrder, SortValue, TransactionItem } from '@customTypes/index';
 const { sortOptions } = constants;
 const defaultSortOption = sortOptions[0];
 
-const fetchTransactionsAtom = atom(async () => {
+export const refreshAtom = atom(false);
+const fetchTransactionsAtom = atom(async (get) => {
+  get(refreshAtom);
   const url = 'https://recruitment-test.flip.id/frontend-test';
   const response = await fetch(url);
 

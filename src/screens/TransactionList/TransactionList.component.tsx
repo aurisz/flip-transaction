@@ -6,9 +6,13 @@ import {
   ActivityIndicator,
   View,
 } from 'react-native';
-import { useAtomValue, useSetAtom } from 'jotai';
+import { useAtomValue, useSetAtom, useAtom } from 'jotai';
 
-import { transactionListAtom, selectTransactionAtom } from '@store/index';
+import {
+  transactionListAtom,
+  selectTransactionAtom,
+  refreshAtom,
+} from '@store/index';
 
 import TransactionListItem from './TransactionListItem';
 import TransactionListHeader from './TransactionListHeader';
@@ -78,6 +82,11 @@ const _renderFooterList = () => (
 function TransactionList({ navigation }: TransactionListProps) {
   const value = useAtomValue(transactionListAtom);
   const setTransaction = useSetAtom(selectTransactionAtom);
+  const [refresh, setRefresh] = useAtom(refreshAtom);
+
+  const onRefresh = async () => {
+    setRefresh(!refresh);
+  };
 
   if (value.isLoading) {
     return _renderLoading();
@@ -95,6 +104,8 @@ function TransactionList({ navigation }: TransactionListProps) {
         ListHeaderComponent={<TransactionListHeader />}
         ListEmptyComponent={_renderEmptyList()}
         ListFooterComponent={_renderFooterList()}
+        onRefresh={onRefresh}
+        refreshing={false}
         renderItem={({ item }) =>
           _renderTransactionItem(
             _getTransactionItemProps(item, navigation, setTransaction),
