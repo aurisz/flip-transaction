@@ -1,7 +1,8 @@
 require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-platform :ios, '12.4'
+deployment_target = Gem::Version.new('12.4')
+platform :ios, deployment_target
 install! 'cocoapods', :deterministic_uuids => false
 
 target 'FlipTransaction' do
@@ -33,5 +34,25 @@ target 'FlipTransaction' do
   post_install do |installer|
     react_native_post_install(installer)
     __apply_Xcode_12_5_M1_post_install_workaround(installer)
+    # Uncomment if using a M1 Mac with XCode 12.5
+    # __apply_Xcode_12_5_M1_post_install_workaround(installer)
+
+    # target -> https://www.rubydoc.info/gems/xcodeproj/Xcodeproj/Project/Object/PBXNativeTarget
+    installer.pods_project.targets.each do |target|
+      case target.name
+      # Ignore RCT-Folly because it only works with 9.0 as a deployment target
+      when 'RCT-Folly'
+        next
+      else
+        # Explicitly set pods deployment target for each build config to app deployment target
+        target.build_configurations.each do |config|
+          current_pod_target = config.build_settings['IPHONEOS_DEPLOYMENT_TARGET']
+          pod_ios_deployment_target = Gem::Version.new(current_pod_target)
+          if pod_ios_deployment_target <= deployment_target
+            config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
+          end
+        end
+      end
+    end
   end
 end
