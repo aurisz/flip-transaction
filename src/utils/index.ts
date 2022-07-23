@@ -16,6 +16,11 @@ const formatDate = (date: string): string => {
   const [year, month, day] = date.split(/\-|\s/);
   // month start at 0
   const formattedDate: Date = new Date(+year, +month - 1, +day);
+
+  /*
+    Notes: need to change jscFlavor to 'org.webkit:android-jsc-intl:'
+    in app/build.gradle for localeString to works in Android
+  */
   const convertedDate: string = formattedDate.toLocaleString('id-ID', {
     month: 'long',
     year: 'numeric',
