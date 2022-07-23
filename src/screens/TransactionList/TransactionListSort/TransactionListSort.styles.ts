@@ -1,24 +1,26 @@
 import { StyleSheet } from 'react-native';
 
+import theme from '@theme/index';
+
 export default StyleSheet.create({
   centeredView: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    backgroundColor: theme.color.overlay,
     height: '100%',
     width: '100%',
   },
   modalView: {
     width: '90%',
-    backgroundColor: 'white',
-    borderRadius: 6,
-    padding: 20,
+    backgroundColor: theme.color.white,
+    borderRadius: theme.radius.xs,
+    padding: theme.space.md,
   },
   button: {
-    padding: 10,
-    height: 50,
-    backgroundColor: '#ffffff',
-    color: 'orange',
+    padding: theme.space.sm,
+    height: theme.space.xxl,
+    backgroundColor: theme.color.white,
+    color: theme.color.orange,
     justifyContent: 'center',
   },
   sortContainer: {
@@ -26,14 +28,14 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   sortLabel: {
-    color: 'orange',
+    color: theme.color.orange,
     fontWeight: 'bold',
     textAlign: 'center',
   },
   sortIcon: {
-    color: 'orange',
+    color: theme.color.orange,
     fontWeight: 'bold',
-    fontSize: 10,
-    paddingLeft: 3,
+    fontSize: theme.text.size.base,
+    paddingLeft: theme.space.xs,
   },
 });

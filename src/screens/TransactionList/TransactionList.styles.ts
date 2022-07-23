@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 
+import theme from '@theme/index';
+
 export default StyleSheet.create({
   container: {
     flex: 1,
@@ -10,15 +12,15 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   emptyContainer: {
-    marginTop: 30,
+    marginTop: theme.space.xl,
     alignItems: 'center',
   },
   footerContainer: {
     alignItems: 'center',
-    marginVertical: 12,
+    marginVertical: theme.space.sm,
   },
   errorText: {
-    fontSize: 18,
-    marginBottom: 12,
+    fontSize: theme.text.size.base,
+    marginBottom: theme.space.md,
   },
 });

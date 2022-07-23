@@ -1,30 +1,35 @@
 import { StyleSheet } from 'react-native';
 
+import theme from '@theme/index';
+
 export default StyleSheet.create({
   container: {
-    backgroundColor: 'white',
+    backgroundColor: theme.color.white,
   },
   section: {
-    padding: 20,
+    padding: theme.space.lg,
   },
   alignCenter: {
     alignItems: 'center',
   },
   header: {
-    color: 'black',
+    color: theme.color.black,
     fontWeight: '600',
   },
+  text: {
+    color: theme.color.black,
+  },
   closeButton: {
-    color: 'orange',
+    color: theme.color.orange,
     fontWeight: '600',
   },
   subHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 20,
-    borderColor: 'grey',
-    borderTopWidth: 0.5,
-    borderBottomWidth: 0.5,
+    padding: theme.space.lg,
+    borderColor: theme.color.grey,
+    borderTopWidth: theme.borderWidth.xs,
+    borderBottomWidth: theme.borderWidth.xs,
   },
   row: {
     flexDirection: 'row',
@@ -32,13 +37,16 @@ export default StyleSheet.create({
   flex: {
     flex: 1,
   },
+  detailContainer: {
+    marginTop: theme.space.sm,
+  },
   column: {
-    paddingVertical: 9,
+    paddingVertical: theme.space.sm,
     flexDirection: 'column',
   },
   copyIcon: {
-    color: 'orange',
-    fontSize: 18,
-    marginLeft: 6,
+    color: theme.color.orange,
+    fontSize: theme.text.size.md,
+    marginLeft: theme.space.sm,
   },
 });

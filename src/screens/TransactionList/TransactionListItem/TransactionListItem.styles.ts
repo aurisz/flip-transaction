@@ -1,59 +1,53 @@
 import { StyleSheet } from 'react-native';
 
+import theme from '@theme/index';
+
 export default StyleSheet.create({
   container: {
-    padding: 12,
-    marginVertical: 6,
-    marginHorizontal: 12,
-    borderLeftWidth: 6,
-    borderRadius: 6,
-    backgroundColor: '#ffffff',
+    padding: theme.space.md,
+    marginVertical: theme.space.xs,
+    marginHorizontal: theme.space.sm,
+    borderLeftWidth: theme.borderWidth.xl,
+    borderRadius: theme.radius.xs,
+    backgroundColor: theme.color.white,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+  text: {
+    color: theme.color.black,
+    fontWeight: '400',
+  },
   containerSuccess: {
-    borderLeftColor: '#22c55e',
+    borderLeftColor: theme.color.green,
   },
   containerPending: {
-    borderLeftColor: 'orange',
-  },
-  bankInfo: {
-    display: 'flex',
-    flexDirection: 'row',
-  },
-  bankLabel: {
-    fontWeight: 'bold',
-    color: 'black',
-  },
-  rightArrow: {
-    marginHorizontal: 3,
-    color: '#000000',
+    borderLeftColor: theme.color.orange,
   },
   additionalInfo: {
     flexDirection: 'row',
   },
   bullet: {
-    marginHorizontal: 4,
-    color: '#000000',
+    marginHorizontal: theme.space.xs,
+    color: theme.color.black,
   },
   badgeContainer: {
     justifyContent: 'center',
   },
   badgeText: {
-    paddingVertical: 6,
-    paddingHorizontal: 12,
+    paddingVertical: theme.space.xs,
+    paddingHorizontal: theme.space.sm,
     fontWeight: 'bold',
-    borderRadius: 6,
+    borderRadius: theme.radius.xs,
   },
   badgeSuccess: {
-    color: '#ffffff',
-    backgroundColor: '#22c55e',
-    borderRadius: 6,
+    color: theme.color.white,
+    backgroundColor: theme.color.green,
+    borderRadius: theme.radius.xs,
   },
   badgePending: {
-    color: 'black',
-    backgroundColor: '#ffffff',
-    borderWidth: 1,
-    borderColor: 'orange',
+    color: theme.color.black,
+    backgroundColor: theme.color.white,
+    borderWidth: theme.borderWidth.base,
+    borderColor: theme.color.orange,
   },
 });

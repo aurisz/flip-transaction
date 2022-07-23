@@ -1,21 +1,14 @@
 import { StyleSheet } from 'react-native';
 
+import theme from '@theme/index';
+
 export default StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#ffffff',
-    borderRadius: 6,
-    margin: 12,
-    padding: 10,
-  },
   icon: {
-    paddingRight: 5,
+    paddingRight: theme.space.xs,
   },
   input: {
     flex: 1,
-    color: 'black',
-    height: 40,
+    color: theme.color.black,
+    height: theme.space.xl,
   },
 });

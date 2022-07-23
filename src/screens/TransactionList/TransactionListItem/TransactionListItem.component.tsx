@@ -21,11 +21,11 @@ const TransactionListItem = (props: TransactionListItemProps) => {
           senderBank={props.senderBank}
           beneficiaryBank={props.beneficiaryBank}
         />
-        <Text>{props.beneficiaryName}</Text>
+        <Text style={styles.text}>{props.beneficiaryName}</Text>
         <View style={styles.additionalInfo}>
-          <Text>{props.amountFormatted}</Text>
+          <Text style={styles.text}>{props.amountFormatted}</Text>
           <Text style={styles.bullet}>●</Text>
-          <Text>{props.createdAt}</Text>
+          <Text style={styles.text}>{props.createdAt}</Text>
         </View>
       </View>
       <View style={styles.badgeContainer}>

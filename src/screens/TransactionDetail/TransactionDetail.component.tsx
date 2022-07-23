@@ -31,29 +31,29 @@ function TransactionDetail({ navigation }: TransactionDetailProps) {
           senderBank={transaction.senderBank}
           beneficiaryBank={transaction.beneficiaryBank}
         />
-        <View style={styles.row}>
+        <View style={[styles.row, styles.detailContainer]}>
           <View style={styles.flex}>
             <View style={styles.column}>
               <Text style={styles.header}>{transaction.beneficiaryName}</Text>
-              <Text>{transaction.accountNumber}</Text>
+              <Text style={styles.text}>{transaction.accountNumber}</Text>
             </View>
             <View style={styles.column}>
               <Text style={styles.header}>BERITA TRANSFER</Text>
-              <Text>{transaction.remark}</Text>
+              <Text style={styles.text}>{transaction.remark}</Text>
             </View>
             <View style={styles.column}>
               <Text style={styles.header}>WAKTU DIBUAT</Text>
-              <Text>{transaction.createdAt}</Text>
+              <Text style={styles.text}>{transaction.createdAt}</Text>
             </View>
           </View>
           <View style={styles.flex}>
             <View style={styles.column}>
               <Text style={styles.header}>NOMINAL</Text>
-              <Text>{transaction.amountFormatted}</Text>
+              <Text style={styles.text}>{transaction.amountFormatted}</Text>
             </View>
             <View style={styles.column}>
               <Text style={styles.header}>KODE UNIK</Text>
-              <Text>{transaction.uniqueCode}</Text>
+              <Text style={styles.text}>{transaction.uniqueCode}</Text>
             </View>
           </View>
         </View>

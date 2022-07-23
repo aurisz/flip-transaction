@@ -1,18 +1,20 @@
 import { StyleSheet } from 'react-native';
 
+import theme from '@theme/index';
+
 export default StyleSheet.create({
   optionContainer: {
     flexDirection: 'row',
     alignItems: 'center',
   },
   optionIcon: {
-    fontSize: 28,
-    color: 'orange',
+    fontSize: theme.text.size.xl,
+    color: theme.color.orange,
   },
   option: {
-    fontSize: 20,
-    color: 'black',
-    paddingVertical: 12,
-    paddingHorizontal: 8,
+    fontSize: theme.text.size.md,
+    color: theme.color.black,
+    paddingVertical: theme.space.md,
+    paddingHorizontal: theme.space.sm,
   },
 });

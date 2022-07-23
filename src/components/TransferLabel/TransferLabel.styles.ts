@@ -1,17 +1,19 @@
 import { StyleSheet } from 'react-native';
 
+import theme from '@theme/index';
+
 export default StyleSheet.create({
   container: {
     display: 'flex',
     flexDirection: 'row',
   },
   bankLabel: {
-    fontSize: 16,
+    fontSize: theme.text.size.base,
     fontWeight: 'bold',
-    color: 'black',
+    color: theme.color.black,
   },
   rightArrow: {
-    marginHorizontal: 3,
-    color: '#000000',
+    marginHorizontal: theme.space.xs,
+    color: theme.color.black,
   },
 });
