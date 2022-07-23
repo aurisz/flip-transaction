@@ -7,22 +7,16 @@ import RadioButton from '@components/RadioButton';
 import constants from '@constants/index';
 import styles from './TransactionListSort.styles';
 
-import type { SortOption } from '@customTypes/index';
 import type { OnSelectSort } from './TransactionListSort.types';
 
 const { sortOptions } = constants;
-const defaultSortOption = sortOptions[0];
 
 const TransactionListSort = () => {
   const [modalVisible, setModalVisible] = React.useState(false);
-  const [selectedSort, setSelectedSort] = React.useState(defaultSortOption);
-  const [, setSortTransactions] = useAtom(sortAtom);
+  const [selectedSort, setSelectedSort] = useAtom(sortAtom);
 
   const handleSelectSort: OnSelectSort = selected => {
-    const selectedValue = selected.value as SortOption;
-
     setSelectedSort(selected);
-    setSortTransactions(selectedValue);
     setModalVisible(!modalVisible);
   };
 

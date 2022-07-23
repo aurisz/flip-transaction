@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useAtom } from 'jotai';
+import { useSetAtom } from 'jotai';
 
 import { filterAtom } from '@store/index';
 import useDebounce from '@hooks/useDebounce';
@@ -7,7 +7,7 @@ import SearchInput from '@components/SearchInput';
 
 const TransactionListFilter = () => {
   const [value, setValue] = React.useState('');
-  const [, setFilter] = useAtom(filterAtom);
+  const setFilter = useSetAtom(filterAtom);
 
   const debouncedValue = useDebounce(value, 250);
 

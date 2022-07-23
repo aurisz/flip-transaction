@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { SafeAreaView, View, Text, Pressable } from 'react-native';
-import { useAtom } from 'jotai';
+import { useAtomValue } from 'jotai';
 import Clipboard from '@react-native-clipboard/clipboard';
 
 import { selectedTransactionAtom } from '@store/index';
@@ -10,7 +10,7 @@ import styles from './TransactionDetail.styles';
 import type { TransactionDetailProps } from './TransactionDetail.types';
 
 function TransactionDetail({ navigation }: TransactionDetailProps) {
-  const [transaction] = useAtom(selectedTransactionAtom);
+  const transaction = useAtomValue(selectedTransactionAtom);
 
   return (
     <SafeAreaView style={styles.container}>

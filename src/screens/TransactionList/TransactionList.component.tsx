@@ -6,7 +6,7 @@ import {
   ActivityIndicator,
   View,
 } from 'react-native';
-import { useAtom } from 'jotai';
+import { useAtomValue, useSetAtom } from 'jotai';
 
 import { transactionListAtom, selectTransactionAtom } from '@store/index';
 
@@ -71,13 +71,13 @@ const _renderEmptyList = () => (
 
 const _renderFooterList = () => (
   <View style={styles.footerContainer}>
-    <Text>-- Semua transaksi sudah ditampilkan --</Text>
+    <Text>-- Semua transaksi ditampilkan --</Text>
   </View>
 );
 
 function TransactionList({ navigation }: TransactionListProps) {
-  const [value] = useAtom(transactionListAtom);
-  const [, setTransaction] = useAtom(selectTransactionAtom);
+  const value = useAtomValue(transactionListAtom);
+  const setTransaction = useSetAtom(selectTransactionAtom);
 
   if (value.isLoading) {
     return _renderLoading();

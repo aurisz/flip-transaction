@@ -8,18 +8,13 @@ import {
 } from '@utils/index';
 import constants from '@constants/index';
 
-import type {
-  SortOrder,
-  SortValue,
-  SortOption,
-  TransactionItem,
-} from '@customTypes/index';
+import type { SortOrder, SortValue, TransactionItem } from '@customTypes/index';
 
-const url = 'https://recruitment-test.flip.id/frontend-test';
 const { sortOptions } = constants;
-const defaultSort = sortOptions[0].value as SortOption;
+const defaultSortOption = sortOptions[0];
 
 const fetchTransactionsAtom = atom(async () => {
+  const url = 'https://recruitment-test.flip.id/frontend-test';
   const response = await fetch(url);
 
   const data = await response.json();
@@ -27,14 +22,10 @@ const fetchTransactionsAtom = atom(async () => {
   return formatTransactionList(data);
 });
 
-export const transactionsAtom = loadable(fetchTransactionsAtom);
-export const filterAtom = atom('');
-export const sortAtom = atom<SortOption>(defaultSort);
+export const loadableTransactionsAtom = loadable(fetchTransactionsAtom);
 
-export const transactionListAtom = atom(get => {
-  const filter = get(filterAtom);
-  const sort = get(sortAtom);
-  const list = get(transactionsAtom);
+export const transactionsAtom = atom(get => {
+  const list = get(loadableTransactionsAtom);
 
   if (list.state === 'loading') {
     return { isLoading: true, isError: false, data: [] };
@@ -44,18 +35,32 @@ export const transactionListAtom = atom(get => {
     return { isError: true, isLoading: false, data: [] };
   }
 
-  const filtered = !filter
-    ? list.data
-    : filterTransactionList(list.data, filter);
+  return {
+    isLoading: false,
+    isError: false,
+    data: list.data,
+  };
+});
 
-  const getSortValueOrder = sort.split('|');
+export const filterAtom = atom('');
+export const sortAtom = atom(defaultSortOption);
+
+export const transactionListAtom = atom(get => {
+  const filter = get(filterAtom);
+  const sort = get(sortAtom);
+  const transactions = get(transactionsAtom);
+
+  const filtered = !filter
+    ? transactions.data
+    : filterTransactionList(transactions.data, filter);
+
+  const getSortValueOrder = sort.value.split('|');
   const sortValue = getSortValueOrder[0] as SortValue;
   const sortOrder = getSortValueOrder[1] as SortOrder;
   const sorted = sortArrayByField(filtered, sortValue, sortOrder);
 
   return {
-    isLoading: false,
-    isError: false,
+    ...transactions,
     data: sorted,
   };
 });
