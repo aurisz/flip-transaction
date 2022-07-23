@@ -5,6 +5,7 @@ import {
   SafeAreaView,
   ActivityIndicator,
   View,
+  Button,
 } from 'react-native';
 import { useAtomValue, useSetAtom, useAtom } from 'jotai';
 
@@ -61,9 +62,10 @@ const _renderLoading = () => (
   </View>
 );
 
-const _renderError = () => (
+const _renderError = (onRefresh: () => void) => (
   <View style={styles.loadingContainer}>
-    <Text>Maaf, terjadi kesalahan. Mohon coba lagi.</Text>
+    <Text style={styles.errorText}>Maaf, terjadi kesalahan.</Text>
+    <Button onPress={onRefresh} title="Coba Lagi" />
   </View>
 );
 
@@ -93,7 +95,7 @@ function TransactionList({ navigation }: TransactionListProps) {
   }
 
   if (value.isError) {
-    return _renderError();
+    return _renderError(onRefresh);
   }
 
   return (

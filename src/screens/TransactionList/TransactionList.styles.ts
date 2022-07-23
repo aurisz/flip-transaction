@@ -17,4 +17,8 @@ export default StyleSheet.create({
     alignItems: 'center',
     marginVertical: 12,
   },
+  errorText: {
+    fontSize: 18,
+    marginBottom: 12,
+  },
 });
