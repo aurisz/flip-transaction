@@ -14,6 +14,7 @@ import {
   selectTransactionAtom,
   refreshAtom,
 } from '@store/index';
+import routes from '@navigation/routes';
 
 import TransactionListItem from './TransactionListItem';
 import TransactionListHeader from './TransactionListHeader';
@@ -47,7 +48,7 @@ const _getTransactionItemProps: GetTransactionItemProps = (
   status,
   statusLabel,
   onPress: () => {
-    navigation.navigate('TransactionDetail');
+    navigation.navigate(routes.TransactionDetail);
     setTransaction(id);
   },
 });
@@ -82,7 +83,7 @@ function TransactionList({ navigation }: TransactionListProps) {
   const setTransaction = useSetAtom(selectTransactionAtom);
   const [refresh, setRefresh] = useAtom(refreshAtom);
 
-  const onRefresh = async () => {
+  const onRefresh = () => {
     setRefresh(!refresh);
   };
 

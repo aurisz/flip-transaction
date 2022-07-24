@@ -3,20 +3,21 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import TransactionList from '@screens/TransactionList';
-import TransactionDetail from '@screens/TransactionDetail/TransactionDetail.component';
+import TransactionDetail from '@screens/TransactionDetail';
+import routes from './routes';
 
 const Stack = createNativeStackNavigator();
 
 const AppNavigation = () => (
   <NavigationContainer>
-    <Stack.Navigator initialRouteName="TransactionList">
+    <Stack.Navigator initialRouteName={routes.TransactionList}>
       <Stack.Screen
-        name="TransactionList"
+        name={routes.TransactionList}
         component={TransactionList}
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="TransactionDetail"
+        name={routes.TransactionDetail}
         component={TransactionDetail}
         options={{ headerShown: false }}
       />
