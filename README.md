@@ -1,7 +1,7 @@
 
 # Flip Transaction
 
-An app to view transactions.
+Simple app to view transactions.
 
 ## Run Locally
 
@@ -34,22 +34,23 @@ Start the app (iOS)
 ```bash
   yarn run ios
 ```
+
 ## Features
 
 - Filter transactions by
-    - name
-    - sender bank
-    - beneficiary bank
-    - transaction amount
+  - name
+  - sender bank
+  - beneficiary bank
+  - transaction amount
 - Sort transactions by
-    - name (A - Z)
-    - name (Z - A)
-    - date newest
-    - date oldest
+  - name (A - Z)
+  - name (Z - A)
+  - date newest
+  - date oldest
 - Pull to Refresh
 - Copy Transaction ID to clipboard
-## Optimizations
 
+## Optimizations
 
 - Using [Jotai](https://jotai.org/) as minimal state management library
 - Using `FlatList` instead `ScrollView` help with performance when rendering large amounts of data
@@ -58,10 +59,11 @@ Start the app (iOS)
 - Using `useMemo` to memoize conditional styling
 - Add module resolver to help tidy up relative imports
 
-
 ## Demo
 
 [APK Download](https://drive.google.com/file/d/1nVP5L8bet9OTXV6-zTjESOB0ncQqpsFr/view?usp=sharing)
+
+![Demo Gif](screenshots/demo_flip.gif)
 
 ## Screenshots
 
